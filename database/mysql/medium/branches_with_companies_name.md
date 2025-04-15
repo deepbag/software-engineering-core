@@ -19,6 +19,6 @@ Empty if no data exists.
 ```sql
 SELECT b.name AS branch_name, c.name AS company_name
 FROM branches b
-JOIN companies c ON b.id = c.id;
+JOIN companies c ON b.company_id = c.id;
 ```
 </details>
