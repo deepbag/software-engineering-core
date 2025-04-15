@@ -57,6 +57,38 @@ CREATE TABLE employees (
   CONSTRAINT chk_salary CHECK (salary >= 0 OR salary IS NULL) -- Ensures salary is non-negative or null
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- Table: projects
+-- Purpose: Stores project details for each company, including status and timestamps
+CREATE TABLE projects (
+  id INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each project
+  company_id INT NOT NULL, -- Foreign key referencing the parent company
+  name VARCHAR(255) NOT NULL, -- Project name
+  description TEXT, -- Optional project description
+  status ENUM('upcoming', 'ongoing', 'completed') DEFAULT 'upcoming', -- Status of the project
+  start_date DATE, -- When the project started (nullable for upcoming projects)
+  end_date DATE, -- When the project was completed (nullable for ongoing or upcoming projects)
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when the project record was created
+  FOREIGN KEY (company_id) REFERENCES companies(id) ON DELETE CASCADE, -- Deletes project if parent company is deleted
+  INDEX idx_project_name (name), -- Index for faster searches on project name
+  INDEX idx_project_status (status) -- Index to filter by project status
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Table: timesheets
+-- Purpose: Stores timesheet entries filled by employees indicating hours worked on specific projects
+CREATE TABLE timesheets (
+  id INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each timesheet entry
+  employee_id INT NOT NULL, -- Foreign key referencing the employee
+  project_id INT NOT NULL, -- Foreign key referencing the project
+  week_ending DATE NOT NULL, -- The Friday (week ending date) the timesheet is for
+  hours_worked DECIMAL(5,2) NOT NULL CHECK (hours_worked >= 0 AND hours_worked <= 168), -- Total hours worked, max 168 (24*7)
+  notes TEXT, -- Optional notes from the employee
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when the timesheet was created
+  FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE, -- Deletes timesheet if employee is deleted
+  FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE, -- Deletes timesheet if project is deleted
+  UNIQUE KEY uniq_timesheet (employee_id, project_id, week_ending), -- Ensures one entry per project per week per employee
+  INDEX idx_week_ending (week_ending) -- Index for filtering by week ending
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 -- Note: ON DELETE CASCADE is used throughout to maintain referential integrity, but be cautious as deleting a company
 -- will cascade to delete all related branches, departments, and employees.
 
