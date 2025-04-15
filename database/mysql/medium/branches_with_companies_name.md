@@ -3,7 +3,7 @@
 **Difficulty**: Medium
 
 **Expected Output**:  
-A table with columns `branch_name`, `company_name`. Example:
+A table with columns `branch_name`, `company_name`.
 
 | branch_name | company_name |
 |-------------|--------------|

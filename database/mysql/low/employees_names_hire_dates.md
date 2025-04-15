@@ -4,7 +4,7 @@
 **Difficulty**: Low
 
 **Expected Output**:  
-A table with columns `first_name`, `last_name`, and `hire_date`. Example:
+A table with columns `first_name`, `last_name`, and `hire_date`.
 
 | first_name | last_name | hire_date  |
 |------------|-----------|------------|
