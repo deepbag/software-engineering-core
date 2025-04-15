@@ -17,8 +17,8 @@ Empty if no data exists.
 <summary>Click to show/hide the solution</summary>
 
 ```sql
-SELECT branches.name AS branch_name, companies.name AS company_name
-FROM branches
-JOIN companies ON branches.company_id = companies.id;
+SELECT b.name AS branch_name, c.name AS company_name
+FROM branches b
+JOIN companies c ON b.id = c.id;
 ```
 </details>
