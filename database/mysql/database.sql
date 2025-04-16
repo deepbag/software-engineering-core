@@ -1,9 +1,11 @@
--- Create the company_db database if it does not already exist with UTF-8 support
+-- Drop database if exist
+DROP DATABASE IF EXISTS it;
+-- Create the it database if it does not already exist with UTF-8 support
 CREATE DATABASE IF NOT EXISTS it
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
--- Use the company_db database for the following operations
+-- Use the it database for the following operations
 USE it;
 
 -- Table: companies
