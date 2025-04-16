@@ -1,4 +1,6 @@
-**Question**: Write an SQL query to retrieve the names of all branches along with the names of the companies they belong to, using the `branches` and `companies` tables.
+**Question**: Write an SQL query to retrieve the names of all branches along with the names of the companies they belong to.
+
+**Tables**: `branches` and `companies`
 
 **Difficulty**: Medium
 
