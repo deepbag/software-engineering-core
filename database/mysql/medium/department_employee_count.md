@@ -4,7 +4,7 @@
 
 **Difficulty**: Medium
 
-### Expected Output
+**Expected Output**:
 
 A table with columns `department_name`, `employee_count`. Example:
 
@@ -18,7 +18,7 @@ Empty if no data exists.
 
 ---
 
-## Solution
+**Solution**:
 
 <details>
 <summary>Click to show/hide the solution</summary>
