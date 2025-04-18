@@ -1,5 +1,5 @@
 
-### React Multiple Choice Questions
+### Day 1 React Multiple Choice Questions
 
 1. **What is React primarily used for?**\
    a) Server-side scripting\

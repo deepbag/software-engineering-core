@@ -1,4 +1,4 @@
-### SQL Multiple Choice Questions
+### Day 3 SQL Multiple Choice Questions
 
 1. **What is a VIEW in SQL?**\
    a) A physical table storing data\

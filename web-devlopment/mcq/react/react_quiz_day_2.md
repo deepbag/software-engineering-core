@@ -1,4 +1,4 @@
-### React Multiple Choice Questions
+### Day 2 React Multiple Choice Questions
 
 1. **What is the primary purpose of React's `useContext` hook?**\
    a) To manage component state\

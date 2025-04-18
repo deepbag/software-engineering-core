@@ -1,4 +1,4 @@
-### React Multiple Choice Questions
+### Day 3 React Multiple Choice Questions
 
 1. **What is the purpose of the `useMemo` hook in React?**\
    a) To manage component state\

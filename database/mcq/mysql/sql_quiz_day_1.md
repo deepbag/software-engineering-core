@@ -1,4 +1,4 @@
-### SQL Multiple Choice Questions
+### Day 1 SQL Multiple Choice Questions
 
 1. **What does SQL stand for?**\
    a) Standard Query Language\

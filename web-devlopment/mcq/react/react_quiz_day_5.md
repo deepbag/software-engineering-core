@@ -1,4 +1,4 @@
-### React Multiple Choice Questions
+### Day 5 React Multiple Choice Questions
 
 1. **What are React Server Components primarily used for?**\
    a) To handle client-side state management\

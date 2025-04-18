@@ -1,4 +1,4 @@
-### SQL Multiple Choice Questions
+### Day 2 SQL Multiple Choice Questions
 
 1. **Which SQL statement is used to add a new column to an existing table?**\
    a) ALTER TABLE\
