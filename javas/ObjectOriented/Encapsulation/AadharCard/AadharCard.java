@@ -7,24 +7,6 @@ public class AadharCard {
     private String address;
     private String dateOfBirth;
 
-//    AadharCard(String ad_name,String ad_aadharNumber,String ad_phone,String ad_address,String ad_dateOfBirth){
-//        if(ad_aadharNumber.length() != 12){
-//            System.out.println("Aadhar Number Should be 12 digits");
-//            return;
-//        }else if(ad_phone.length() != 10){
-//            System.out.println("Phone Number Should be 10 digits");
-//            return;
-//        }else if(ad_address.length() == 0){
-//            System.out.println("Address is required");
-//            return;
-//        }
-//        this.name = ad_name;
-//        this.aadharNumber = ad_aadharNumber;
-//        this.phone = ad_phone;
-//        this.address = ad_address;
-//        this.dateOfBirth = ad_dateOfBirth;
-//    }
-
     public String getName(){
         return this.name;
     }
