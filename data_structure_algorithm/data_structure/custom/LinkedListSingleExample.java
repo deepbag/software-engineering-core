@@ -3,24 +3,19 @@ package data_structure_algorithm.data_structure.custom;
 public class LinkedListSingleExample {
     LinkedListSingleNode head;
 
-    void insertAtBegin(int data){
-        LinkedListSingleNode newNode = new LinkedListSingleNode(data);
-
-        if(head == null){
-            head = newNode;
-            return;
-        }
-
+    public void print(){
         LinkedListSingleNode temp = head;
-        newNode.next = head;
-        head = newNode;
+
+        while(temp != null){
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
     }
 
-    void insertAtEnd(int data){
-        LinkedListSingleNode newNode = new LinkedListSingleNode(data);
-
+    public void insertAtEnd(int data){
         if(head == null){
-            head = newNode;
+            head = new LinkedListSingleNode(data);
             return;
         }
 
@@ -29,146 +24,183 @@ public class LinkedListSingleExample {
         while(temp.next != null){
             temp = temp.next;
         }
-        temp.next = newNode;
+
+        temp.next = new LinkedListSingleNode(data);
     }
 
-    void insertAt(int index, int data){
-        LinkedListSingleNode newNode = new LinkedListSingleNode(data);
-
+    public void insertAtBegin(int data){
         if(head == null){
-            head = newNode;
-            return;
-        }
-
-        if(index == 0){
-            newNode.next = head;
-            head = newNode;
+            head = new LinkedListSingleNode(data);
             return;
         }
 
         LinkedListSingleNode temp = head;
-        for(int i=0;temp != null && i<index-1;i++){
+        head = new LinkedListSingleNode(data);
+        head.next = temp;
+    }
+
+    public void insertAt(int index, int data){
+        if(head == null){
+            System.out.println("Index Not Found!");
+            return;
+        }
+
+        if(index < 0){
+            System.out.println("Invalid Index!");
+            return;
+        }
+
+        LinkedListSingleNode node = new LinkedListSingleNode(data);
+
+        if(index == 0){
+            node.next = head;
+            head = node;
+            return;
+        }
+
+        LinkedListSingleNode temp = head;
+
+        int i = 0;
+        while(temp != null && i < index-1){
             temp = temp.next;
+            i++;
         }
 
         if(temp == null){
-            System.out.println("Index is out of bound!");
+            System.out.println(index+" - Index Out Of Bound!");
+            return;
         }
-        newNode.next = temp.next;
-        temp.next = newNode;
+
+        node.next = temp.next;
+        temp.next = node;
     }
 
-    void deleteByData(int data){
+    public void deleteByIndex(int index){
         if(head == null){
+            System.out.println("List is Empty!");
+            return;
+        }
+
+        if (index < 0) {
+            System.out.println("Invalid Index!");
+            return;
+        }
+
+        if(index == 0){
+            head = head.next;
+            return;
+        }
+
+        LinkedListSingleNode temp = head;
+
+        int i = 0;
+
+        while(temp != null && i<index-1){
+            temp = temp.next;
+            i++;
+        }
+
+        if(temp == null || temp.next == null){
+            System.out.println(index + " - Index is out of Bound!");
+            return;
+        }
+
+        temp.next = temp.next.next;
+    }
+
+    public void deleteByData(int data){
+        if(head == null){
+            System.out.println("List is Empty!");
             return;
         }
 
         if(head.data == data){
-            if(head.next != null){
-                head = head.next;
-            } else{
-                head = null;
-            }
+            head = head.next;
             return;
         }
 
         LinkedListSingleNode temp = head;
+
         while(temp.next != null && temp.next.data != data){
             temp = temp.next;
         }
 
-        if(temp.next == null){
-            System.out.println("Data is not exist");
+        if (temp.next == null) {
+            System.out.println(data+" - Data Not Found!");
             return;
         }
 
         temp.next = temp.next.next;
     }
 
-    void deleteByIndex(int index){
+    public void findIndex(int data){
         if(head == null){
+            System.out.println("List is Empty!");
             return;
         }
 
-        if(index == 0){
-            if(head.next != null){
-                head = head.next;
-            }else{
-                head = null;
-            }
-        }
-
-        LinkedListSingleNode temp = head;
-        for(int i=0;temp.next != null && i<index-1;i++){
-            temp = temp.next;
-        }
-
-        if(temp.next == null){
-            System.out.println("Data is not exist");
-            return;
-        }
-
-        temp.next = temp.next.next;
-    }
-
-    void getIndexByData(int data) {
-        if (head == null) {
-            System.out.println("Not Found!");
+        if(head.data == data){
+            System.out.println(data+" - Index Number: "+0);
             return;
         }
 
         LinkedListSingleNode temp = head;
+
         int count = 0;
-
-        while (temp != null) {
-            if (temp.data == data) {
-                System.out.println("Index Number: " + data + " --> " + count);
-                return;
-            }
+        while(temp != null && temp.data != data){
+            temp = temp.next;
             count++;
-            temp = temp.next;
         }
 
-        System.out.println("Not Found: "+data);
-    }
-
-    void size(){
-        int count = 0;
-        LinkedListSingleNode temp = head;
-        while(temp != null){
-            count++;
-            temp = temp.next;
+        if(temp == null){
+            System.out.println(data+" - Data Not Found!");
+            return;
         }
 
-        System.out.println("Total Size: "+count);
-    }
+        System.out.println(data+" - Index Number: "+count);
 
-    void display(){
-        LinkedListSingleNode temp = head;
-        while(temp != null){
-            System.out.print(temp.data + " >> ");
-            temp = temp.next;
-        }
-        System.out.println("null");
     }
 
     public static void main(String[] arg){
-        LinkedListSingleExample lls = new LinkedListSingleExample();
-        lls.display();
-        lls.insertAtBegin(10);
-        lls.insertAtBegin(20);
-        lls.insertAtBegin(30);
-        lls.insertAtEnd(40);
-        lls.insertAtEnd(50);
-        lls.insertAtEnd(60);
-        lls.insertAt(2,90);
-        lls.deleteByData(10);
-        lls.deleteByIndex(3);
-        lls.getIndexByData(90);
-        lls.getIndexByData(60);
-        lls.getIndexByData(100);
-        lls.size();
-        lls.display();
+        LinkedListSingleExample linkedList = new LinkedListSingleExample();
+        linkedList.print();
+        linkedList.insertAtEnd(10);
+        linkedList.print();
+        linkedList.insertAtEnd(20);
+        linkedList.print();
+        linkedList.insertAtEnd(30);
+        linkedList.print();
+        linkedList.insertAtBegin(40);
+        linkedList.print();
+        linkedList.insertAtBegin(50);
+        linkedList.print();
+        linkedList.insertAt(2,60);
+        linkedList.print();
+        linkedList.insertAt(8,70);
+        linkedList.print();
+        linkedList.insertAt(0,70);
+        linkedList.print();
+        linkedList.deleteByIndex(0);
+        linkedList.print();
+        linkedList.deleteByIndex(2);
+        linkedList.print();
+        linkedList.deleteByIndex(4);
+        linkedList.print();
+        linkedList.deleteByIndex(4);
+        linkedList.print();
+        linkedList.deleteByData(20);
+        linkedList.print();
+        linkedList.deleteByData(40);
+        linkedList.print();
+        linkedList.deleteByData(100);
+        linkedList.print();
+        linkedList.insertAtBegin(40);
+        linkedList.print();
+        linkedList.insertAtBegin(90);
+        linkedList.print();
+        linkedList.findIndex(100);
+        linkedList.findIndex(50);
+        linkedList.findIndex(10);
     }
 }
 
